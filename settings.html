@@ -1,0 +1,20 @@
+ <div class="ui reply form">
+  <div class="ui checkbox">
+    <input type="checkbox" ng-click="automaticCollect=!automaticCollect" ng-checked="automaticCollect" />
+    <label>Automatic Scrape Page</label>
+  </div>
+
+  <div class="ui checkbox">
+    <input type="checkbox" ng-click="automaticNextPage=!automaticNextPage" ng-checked="automaticNextPage" />
+    <label>Automatic Goto Next Page</label>
+  </div>
+
+  <div class="field mt-3">
+    <label> Links to scrape</label>
+    <textarea class="rounded-0" ng-model="linksText">{{ linksText }}</textarea>
+  </div>
+</div>
+
+<button class="ui button green fluid mt-3" ng-click="saveSettings(2)">
+  Save
+</button>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/> -->
+  <!-- <link rel="stylesheet" type="text/css" href="zooAll.min.css" /> -->
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="lockr.min.js"></script>
+  <script defer type="text/javascript" src="popup.js"></script>
+</head>
+
+<body ng-app="app" ng-cloak style="height: 400px;">
+  <div ng-controller="myController">
+    <!-- Navbar -->
+    <div class="ui p-3 pb-0 mb-0 fluid rounded-0 mini border-0 borderless" ng-include="'navbar.html'"></div>
+    <!-- Navbar -->
+
+    <!-- Menu -->
+    <div class="ui two item secondary green pointing menu mt-0">
+      <!-- <a ng-class="(activeTab==1) ? 'active item': 'item' " ng-click="saveSettings(1)">Bookmarks</a> -->
+      <a ng-class="(activeTab==2) ? 'active item': 'item' " ng-click="saveSettings(2)">Add as Contacts</a>
+      <a ng-class="(activeTab==3) ? 'active item': 'item' " ng-click="saveSettings(3)">About</a>
+    </div>
+    <!-- Menu -->
+
+    <!-- Tab Home -->
+    <div class="p-3" ng-if="activeTab==2" ng-include="'home.html'"></div>
+    <!-- Tab Home -->
+
+    <!-- Tab Bookmark -->
+    <div class="p-3" ng-if="activeTab==1">
+
+      <div class="ui form small">
+
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="" ng-model="bookmarkTitle" placeholder="Title">
+          </div>
+          <div class="field">
+            <input type="text" name="" ng-model="bookmarkUrl" placeholder="URL">
+          </div>
+        </div>
+
+        <div class="field">
+          <button ng-click="storeBookmark(bookmarkTitle,bookmarkUrl)" class="ui button green rounded-0 fluid mt-3">Save as Bookmark</button>
+        </div>
+      </div>
+
+      <!-- Bookmarks -->
+      <span ng-repeat="each in bookmarkList track by $index" class="mt-5">
+        <span class="ui basic green large label mt-4 active">
+          <a href="{{each.url}}" target="_blank">{{each.title}}</a>
+          <i class="ui icon close mini mt-1 ml-3" ng-click="deleteBookmark(each.random)"></i>
+        </span>
+      </span>
+      <!-- Bookmarks -->
+
+
+    </div>
+    <!-- Tab Bookmark -->
+
+    <!-- Tab About -->
+    <div class="p-2" ng-if="activeTab==3" ng-include="'about.html'"></div>
+    <!-- Tab About -->
+  </div>
+</body>
+</html>

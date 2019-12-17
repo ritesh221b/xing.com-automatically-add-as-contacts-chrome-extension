@@ -1,0 +1,32 @@
+{
+  "name": "Upwork Helping Hand - Upwork Chrome Extension for Clients",
+  "description": "Upwork Helping Hand - Upwork Chrome Extension for Clients",
+  "version": "1.1",
+  "background":{
+    "scripts" : ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "popup.html",
+    "default_title": "KHB"
+  },
+  "icons": { "16": "logo.png",
+    "32": "logo.png",
+    "120": "logo.png" 
+  },
+  "permissions": [
+    "tabs","<all_urls>",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["jquery.js","content.js","popup.js","lockr.min.js","lodash.min.js","semantic.min.js"],
+      "run_at": "document_start"
+    }
+  ], 
+  "manifest_version":2
+}
